@@ -105,6 +105,10 @@
  
           var secondCanvas = document.getElementById('blueData');
           var secondContext = secondCanvas.getContext("2d");
+          secondContext.font = '20pt Calibri';
+          secondContext.fillStyle = "black";
+          secondContext.fillText("Blue image will go here", 10, 20);
+
 
           var imageData = context.getImageData(0,0,600,500);
           var data = imageData.data
@@ -113,7 +117,7 @@
               data[I] = 0;
               data[i+1] = 0;
                   }
-             secondCtx.putImageData(imageData,0,0);
+             secondContext.putImageData(imageData,0,0);
         }
         img.src = reader.result;
       }
@@ -151,12 +155,6 @@
       </script>
 
      <canvas id="blueData" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
-      <script> /* This script initiates the cavas and puts the text on the canvas "blueData" */
-        var secondCanvas = document.getElementById('blueData');
-        var secondContext = secondCanvas.getContext("2d");
-        context.font = '20pt Calibri';
-        context.fillStyle = "black";
-        context.fillText("Blue image will go here", 10, 20);
       </script>
 
     </div><!-- /content -->
