@@ -101,10 +101,12 @@
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
-          var secondCanvas = document.getElementById('secondCanvas');
-          var secondCtx =  document.getElementById('2d');
-          const imageData = originalCtx.getImageData(0, 0, originalCanvas.width, originalCanvas.height);
-          const data = imageData.data
+         
+          var originalImageData = originalCtx.getImageData(0, 0, originalCanvas.width, originalCanvas.height);
+          var originalData = originalImageData.data;
+ 
+          var blueImageData = originalCtx.createImageData(originalCanvas.width, originalCanvas.height);
+          var blueData = blueImageData.data
 
             for (var i = 0; i < data.length; i += 4) {
                  var red = originalData[i];
@@ -119,16 +121,15 @@
                      blueData[i + 3] = 0;
                  }
             }
-            blueCtx.putImageData(blueImageData, 0, 0);
+            secondCtx.putImageData(blueImageData, 0, 0);
         }
         img.src = reader.result;
       }
       reader.readAsDataURL(file);
-    }
-    else {
+    } else {
        messageDisplayArea.innerHTML = "File not supported!"
-    }
- });
+        }
+    });
 }
             
           
@@ -170,9 +171,9 @@
         context.fillText("Original image will go here", 10, 20);
       </script>
 
-     <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+     <canvas id="secondCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
-        var secondCanvas = document.getElementById('myCanvas');
+        var secondCanvas = document.getElementById('secondCanvas');
         var secondContext = canvas.getContext("2d");
         context.font = '20pt Calibri';
         context.fillStyle = "black";
