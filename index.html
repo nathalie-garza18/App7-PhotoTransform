@@ -152,7 +152,7 @@
       <canvas id="blueData" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> 
         var secondCanvas = document.getElementById('blueData');
-        var secondContext = secondContext.getContext("2d");
+        var secondContext = secondCanvas.getContext("2d");
         secondContext.font = '20pt Calibri';
         secondContext.fillStyle = "black";
         secondContext.fillText("Blue image will go here", 10, 20);
