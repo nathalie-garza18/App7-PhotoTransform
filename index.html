@@ -106,7 +106,7 @@
  
            var secondCanvas = document.getElementById('blueData');
            var secondContext = secondCanvas.getContext("2d");
-         
+         /* Initalizes new canvas where blue data image will go */
            secondContext.font = '20pt Calibri';
            secondContext.fillStyle = "black";
            secondContext.fillText("Blue image will go here", 10, 20);
@@ -114,18 +114,24 @@
            var imageData = context.getImageData(0,0,600,500);
            var data = imageData.data;
 
+        /* Retrieves pixel image data from user upload */
+
+         
            for (var i = 0; i < data.length; i += 4) {
                data[i] = 0;
                data[i+1] = 0;
-           }
+           } // End of image.onload
            secondContext.putImageData(imageData,0,0);
+       /* The for loop above checks the pixels in the original image and sets 
+       the red and green pixels to zero thus keeping only the blue pixels */
        }
        img.src = reader.result;
-    }
+    } // End of reader onload
     reader.readAsDataURL(file);
-  } else {
+    // End of if statement that checks whether file is an image
+  } else { 
       messageDisplayArea.innerHTML = "File not supported!";
-   }
+   } //If not an image file
  });
 }
    </script>
@@ -145,7 +151,7 @@
       
       <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <canvas id="blueData" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
-     
+     /* Each canvas has their own text "original image vs blue image" where the images will be uploaded to */
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
